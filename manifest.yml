@@ -1,0 +1,5 @@
+---
+applications:
+- name: tutorial-java
+  instances: 1
+  docker image: subhankarc/tutorial-java

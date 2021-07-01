@@ -23,10 +23,7 @@ public class TodoController {
     public ResponseEntity<?> addTodo(@RequestBody TodoRecord newTodoRecord) {
         newTodoRecord.setId(UUID.randomUUID().toString());
         logger.info("Adding a new todo: {}", newTodoRecord);
-        // The bug in here in is for the bughunt example
-        String todoTitle = newTodoRecord.getTitle().replaceAll("[^a-zA-Z0-9\\s]+", "");
-        newTodoRecord.setTitle(todoTitle);
-        todos.add(newTodoRecord);
+        TodoUtils.addTodoRecord(newTodoRecord);
         Map<String, String> entities = new HashMap<>();
         entities.put("status", "ok");
         return new ResponseEntity<>(entities, HttpStatus.OK);
